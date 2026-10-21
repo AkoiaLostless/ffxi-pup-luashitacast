@@ -75,9 +75,8 @@ Maneuvers
     Using a maneuver puts on the set for that element, before the
     maneuver is sent, and holds it for maneuver_lock_seconds (0.5) after
     it finishes:
-        Fire_Maneuver (STR)    Ice_Maneuver (INT)    Wind_Maneuver (AGI)
-        Earth_Maneuver (VIT)   Thunder_Maneuver (DEX) Water_Maneuver (MND)
-        Light_Maneuver (CHR)   Dark_Maneuver (MP)
+        Fire_Maneuver    Ice_Maneuver      Wind_Maneuver    Earth_Maneuver
+        Thunder_Maneuver Water_Maneuver    Light_Maneuver   Dark_Maneuver
 
 Other job abilities
     Activate / Deus Ex Automata -> Activate
