@@ -5,7 +5,7 @@ Puppetmaster profile for Rag's LuAshitacast common files (version 320).
 
 Install:
     PUP.lua                    -> your character folder (replaces your old PUP.lua)
-    common\gcinclude-pup.lua   -> your common folder, next to Rag's files
+    common\gcinclude-pup.lua   -> luashitacast\common (not the character folder), next to Rag's files
 
 Rag's 4 common files (gcmelee.lua, gcmage.lua, gcinclude-rag.lua, gcdisplay-rag.lua) are not changed.
 gcinclude-pup.lua loads both gcmelee and gcmage and keeps them from conflicting. This file only holds your gear and settings.

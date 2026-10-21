@@ -4,16 +4,19 @@ PUP LuAshitacast profile - Command reference
 Puppetmaster profile for LuAshitacast (Ashita v4), built on Rag's
 LuAshitacast (RAGS) v320 common files. Level-75 era (Horizon).
 
-Files:
-    PUP.lua                    your gear sets and settings
-    common\gcinclude-pup.lua   PUP addendum (all PUP-specific logic)
+Where the files go:
+    Ashita\config\addons\luashitacast\<CharacterName_ID>\PUP.lua
+        your gear sets and settings (from this repo)
+    Ashita\config\addons\luashitacast\common\gcinclude-pup.lua
+        PUP addendum, all PUP-specific logic (from this repo)
 
-Also needed in the same common folder, from Rag's LuAshitacast v320
-(https://github.com/yzyii/luashitacast), not included in this repo:
-    common\gcmelee.lua
-    common\gcmage.lua
-    common\gcinclude-rag.lua
-    common\gcdisplay-rag.lua
+Also needed in that same luashitacast\common folder, from Rag's
+LuAshitacast v320 (https://github.com/yzyii/luashitacast), not included
+in this repo:
+    gcmelee.lua
+    gcmage.lua
+    gcinclude-rag.lua
+    gcdisplay-rag.lua
 
 All commands below are typed in game as shown (for example /pupmode).
 They are aliases for /lac fwd <command>.

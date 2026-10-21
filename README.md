@@ -4,21 +4,21 @@ Puppetmaster job profile for LuAshitacast (Ashita v4), built on Rag's LuAshitaca
 
 ## Install
 
-Copy into `Ashita/config/addons/luashitacast/<CharacterName_ID>/`:
+```
+Ashita/config/addons/luashitacast/
+├── <CharacterName_ID>/
+│   └── PUP.lua                from this repo (your gear and settings)
+└── common/
+    ├── gcinclude-pup.lua      from this repo (all PUP-specific logic)
+    ├── gcinclude-rag.lua      Rag's v320
+    ├── gcmelee.lua            Rag's v320
+    ├── gcmage.lua             Rag's v320
+    └── gcdisplay-rag.lua      Rag's v320
+```
 
-```
-PUP.lua
-common/gcinclude-pup.lua   PUP addendum (all PUP-specific logic)
-```
-
-It also needs Rag's v320 common files in the same `common` folder. They are not in this repo; get them from RAGS: https://github.com/yzyii/luashitacast
-
-```
-common/gcinclude-rag.lua
-common/gcmelee.lua
-common/gcmage.lua
-common/gcdisplay-rag.lua
-```
+- `PUP.lua` goes in your character folder.
+- `common/gcinclude-pup.lua` goes in the `common` folder inside `luashitacast`, next to Rag's files.
+- Rag's four files are not in this repo; get them from RAGS: https://github.com/yzyii/luashitacast
 
 ## PUP commands
 
