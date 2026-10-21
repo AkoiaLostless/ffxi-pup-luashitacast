@@ -94,3 +94,17 @@ Each one switches your idle set to that set. Type the same command again to go b
 | `/lac reload` | Reloads the profile after copying new files. |
 | `/lac set <set> <seconds>` | Equips a set and holds it for that many seconds. |
 | `/lac disable all` | Stops all gear swaps (`/lac enable all` to undo). |
+
+## What Horizon Mode turns off
+
+With LuAshitacast's Horizon Mode on, your normal gear check runs only once after each of your own actions (an ability, spell, weaponskill, ranged attack, item or `/lac fwd` command). It does not keep re-checking in the background. Your action gear (job abilities, maneuvers, precast, midcast, weaponskills) still works as normal. Anything that waits for something else to happen does not update until your next action:
+
+- **Pet weaponskill gear:** `Pet_WS` and `Pet_RNGWS` don't go on when the automaton reaches TP or starts a weaponskill.
+- **Pet magic by spell type:** the profile can't react to which spell the automaton casts. That's why the pet magic legs follow `/pupmode` (Heals / Mage) instead.
+- **Automaton engaging or disengaging:** `Pet_Only_Tp_*`, the `/pupmode` sets and `Idle_Pet` don't switch when the automaton engages, disengages or is deployed.
+- **Resting:** Rag's `Resting` set and `Resting_MPSub` (Dark Staff) wait 16 seconds after you sit, so they won't go on by themselves.
+- **After a maneuver:** once the 0.5 second hold runs out, your normal gear comes back on your next action, not straight away.
+- **Overdrive ending:** the `Overdrive` set stays on until your next action after the buff wears off.
+- **Movement, town and buff changes:** `Movement`, `Town`, Aftermath / Mjollnir Haste TP sets and similar only change on your next action.
+
+Typing any profile command (for example `/pupdebug`) counts as an action and makes the gear check run once.

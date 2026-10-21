@@ -189,3 +189,32 @@ same command again to go back to the previous one.
 /lac reload            reload the profile after copying new files
 /lac set <set> <secs>  equip a set and hold it for that many seconds
 /lac disable all       stop all gear swaps (/lac enable all to undo)
+
+
+---------------------------------------------
+6. What Horizon Mode turns off
+---------------------------------------------
+
+With LuAshitacast's Horizon Mode on, your normal gear check runs only
+once after each of your own actions (ability, spell, weaponskill, ranged
+attack, item or /lac fwd command), not continuously. Action gear (job
+abilities, maneuvers, precast, midcast, weaponskills) works as normal.
+Anything that waits for something else does not update until your next
+action:
+
+- Pet weaponskill gear: Pet_WS / Pet_RNGWS do not go on when the
+  automaton reaches TP or starts a weaponskill.
+- Pet magic by spell type: the profile cannot react to the automaton's
+  spell, which is why pet magic legs follow /pupmode (Heals / Mage).
+- Automaton engaging, disengaging or being deployed: Pet_Only_Tp_*,
+  the /pupmode sets and Idle_Pet do not switch by themselves.
+- Resting: Rag's Resting set and Resting_MPSub (Dark Staff) wait
+  16 seconds after you sit, so they will not go on by themselves.
+- After a maneuver: once the 0.5 second hold ends, normal gear comes
+  back on your next action.
+- Overdrive ending: the Overdrive set stays on until your next action.
+- Movement, town and buff changes (Movement, Town, Aftermath /
+  Mjollnir Haste TP sets) only change on your next action.
+
+Typing any profile command (e.g. /pupdebug) counts as an action and runs
+the gear check once.
