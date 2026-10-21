@@ -4,6 +4,9 @@ PUP LuAshitacast profile - Command reference
 Puppetmaster profile for LuAshitacast (Ashita v4), built on Rag's
 LuAshitacast (RAGS) v320 common files. Level-75 era (Horizon).
 
+PUP Lua inspired by LUA from GetAwayCoxn's Lv99 LUA
+Distilled and formatted for integration with Rag's LUA
+
 Where the files go:
     Ashita\config\addons\luashitacast\<CharacterName_ID>\PUP.lua
         your gear sets and settings (from this repo)

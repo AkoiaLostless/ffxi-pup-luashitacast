@@ -2,6 +2,9 @@
 
 Puppetmaster job profile for LuAshitacast (Ashita v4), built on Rag's LuAshitacast (RAGS) v320 common files. Level-75 era content (Horizon).
 
+PUP Lua inspired by LUA from GetAwayCoxn's Lv99 LUA  
+Distilled and formatted for integration with Rag's LUA
+
 ## Install
 
 ```
