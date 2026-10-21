@@ -210,8 +210,6 @@ action:
   the /pupmode sets and Idle_Pet do not switch by themselves.
 - Resting: Rag's Resting set and Resting_MPSub (Dark Staff) wait
   16 seconds after you sit, so they will not go on by themselves.
-- After a maneuver: once the 0.5 second hold ends, normal gear comes
-  back on your next action.
 - Overdrive ending: the Overdrive set stays on until your next action.
 - Movement, town and buff changes (Movement, Town, Aftermath /
   Mjollnir Haste TP sets) only change on your next action.
