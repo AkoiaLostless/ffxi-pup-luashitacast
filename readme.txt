@@ -68,7 +68,7 @@ They are aliases for /lac fwd <command>.
 
 
 ---------------------------------------------
-2. Automatic PUP behaviour (no command)
+2. Automatic PUP behavior (no command)
 ---------------------------------------------
 
 Maneuvers

@@ -32,7 +32,7 @@ Ashita/config/addons/luashitacast/
 | `/staff` | Toggles weapon swaps while casting. Off by default, so Main and Sub stay put during precast and midcast. Turn it on to let a staff in your spell sets or Rag's elemental staves go on. Starting value: `allow_staff_swaps` in `PUP.lua`. |
 | `/pupdebug` | Prints PupMode, IdleSet, pet, Lock, the pet magic legs, your Status, SubJob and the `Resting_MPSub` staff. |
 
-## Automatic PUP behaviour
+## Automatic PUP behavior
 
 - **Maneuvers:** using a maneuver puts on that element's set before the maneuver is sent and holds it 0.5 seconds after it finishes: `Fire_Maneuver` (STR), `Ice_Maneuver` (INT), `Wind_Maneuver` (AGI), `Earth_Maneuver` (VIT), `Thunder_Maneuver` (DEX), `Water_Maneuver` (MND), `Light_Maneuver` (CHR), `Dark_Maneuver` (MP). To wear it earlier, use a macro: `/lac set Fire_Maneuver 3`, `/wait 1`, `/ja "Fire Maneuver" <me>`.
 - **Other job abilities:** Activate / Deus Ex Automata → `Activate`, Repair / Maintenance → `Repair`, Overdrive → `Overdrive` (also kept on while the buff is up), Ventriloquy → `Ventriloquy`, Role Reversal → `Role_Reversal`.
