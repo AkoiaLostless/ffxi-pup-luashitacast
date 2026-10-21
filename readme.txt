@@ -156,8 +156,7 @@ same command again to go back to the previous one.
     Equips your Reraise Hairpin and uses it after 31 seconds.
 
 /horizonmode
-    Re-runs your normal gear check once. It does not turn LuAshitacast's
-    Horizon Mode on or off.
+    Horizon Mode Toggle
 
 
 ---------------------------------------------
@@ -178,16 +177,7 @@ same command again to go back to the previous one.
 
 
 ---------------------------------------------
-5. Useful LuAshitacast built-ins
----------------------------------------------
-
-/lac reload            reload the profile after copying new files
-/lac set <set> <secs>  equip a set and hold it for that many seconds
-/lac disable all       stop all gear swaps (/lac enable all to undo)
-
-
----------------------------------------------
-6. What Horizon Mode turns off
+5. What Horizon Mode turns off
 ---------------------------------------------
 
 With LuAshitacast's Horizon Mode on, your normal gear check runs only
@@ -208,3 +198,6 @@ action:
 
 Typing any profile command (e.g. /pupdebug) counts as an action and runs
 the gear check once.
+
+Whether these features can be used may need approval from the HorizonXI
+team.

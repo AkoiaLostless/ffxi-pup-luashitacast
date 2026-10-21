@@ -76,7 +76,7 @@ Each one switches your idle set to that set. Type the same command again to go b
 | `/resethp` | Clears `/sethp` and `/addhp`. |
 | `/warpme` | Equips your Warp Cudgel and uses it after 31 seconds. |
 | `/reraise` | Equips your Reraise Hairpin and uses it after 31 seconds. |
-| `/horizonmode` | Re-runs your normal gear check once. It does not turn LuAshitacast's Horizon Mode on or off. |
+| `/horizonmode` | Horizon Mode Toggle |
 
 ### Magic (for your subjob spells)
 
@@ -86,14 +86,6 @@ Each one switches your idle set to that set. Type the same command again to go b
 | `/setmp <number>` | Your max MP, for gcmage's MP-based gear checks. Overrides the `*SJMaxMP` settings in `PUP.lua`. |
 | `/addmp <number>` | Extra MP added to that value. |
 | `/resetmp` | Clears `/setmp` and `/addmp`. |
-
-## LuAshitacast built-ins
-
-| Command | What it does |
-|---|---|
-| `/lac reload` | Reloads the profile after copying new files. |
-| `/lac set <set> <seconds>` | Equips a set and holds it for that many seconds. |
-| `/lac disable all` | Stops all gear swaps (`/lac enable all` to undo). |
 
 ## What Horizon Mode turns off
 
@@ -105,3 +97,5 @@ With LuAshitacast's Horizon Mode on, your normal gear check runs only once after
 - **Movement, town and buff changes:** `Movement`, `Town`, Aftermath / Mjollnir Haste TP sets and similar only change on your next action.
 
 Typing any profile command (for example `/pupdebug`) counts as an action and makes the gear check run once.
+
+Whether these features can be used may need approval from the HorizonXI team.
