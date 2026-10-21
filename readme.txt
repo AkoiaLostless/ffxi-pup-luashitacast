@@ -78,10 +78,6 @@ Maneuvers
         Fire_Maneuver (STR)    Ice_Maneuver (INT)    Wind_Maneuver (AGI)
         Earth_Maneuver (VIT)   Thunder_Maneuver (DEX) Water_Maneuver (MND)
         Light_Maneuver (CHR)   Dark_Maneuver (MP)
-    To wear the set even earlier, use a macro:
-        /lac set Fire_Maneuver 3
-        /wait 1
-        /ja "Fire Maneuver" <me>
 
 Other job abilities
     Activate / Deus Ex Automata -> Activate

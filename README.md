@@ -34,7 +34,7 @@ Ashita/config/addons/luashitacast/
 
 ## Automatic PUP behavior
 
-- **Maneuvers:** using a maneuver puts on that element's set before the maneuver is sent and holds it 0.5 seconds after it finishes: `Fire_Maneuver` (STR), `Ice_Maneuver` (INT), `Wind_Maneuver` (AGI), `Earth_Maneuver` (VIT), `Thunder_Maneuver` (DEX), `Water_Maneuver` (MND), `Light_Maneuver` (CHR), `Dark_Maneuver` (MP). To wear it earlier, use a macro: `/lac set Fire_Maneuver 3`, `/wait 1`, `/ja "Fire Maneuver" <me>`.
+- **Maneuvers:** using a maneuver puts on that element's set before the maneuver is sent and holds it 0.5 seconds after it finishes: `Fire_Maneuver` (STR), `Ice_Maneuver` (INT), `Wind_Maneuver` (AGI), `Earth_Maneuver` (VIT), `Thunder_Maneuver` (DEX), `Water_Maneuver` (MND), `Light_Maneuver` (CHR), `Dark_Maneuver` (MP).
 - **Other job abilities:** Activate / Deus Ex Automata → `Activate`, Repair / Maintenance → `Repair`, Overdrive → `Overdrive` (also kept on while the buff is up), Ventriloquy → `Ventriloquy`, Role Reversal → `Role_Reversal`.
 - **Resting on an MP subjob:** on DRK, WHM, RDM, BLM or BLU, `Resting_MPSub` (your Dark Staff) goes on over Rag's Resting set after the same 16 second wait.
 - **/DRK extras (Rag v320):** Weapon Bash → `WeaponBash`; Stun with `/mode` Accuracy → `StunACC`.
