@@ -10,10 +10,10 @@ Ashita/config/addons/luashitacast/
 │   └── PUP.lua                from this repo (your gear and settings)
 └── common/
     ├── gcinclude-pup.lua      from this repo (all PUP-specific logic)
-    ├── gcinclude-rag.lua      Rag's v320
-    ├── gcmelee.lua            Rag's v320
-    ├── gcmage.lua             Rag's v320
-    └── gcdisplay-rag.lua      Rag's v320
+    ├── gcinclude-rag.lua      Rag's v320 (not in this repo)
+    ├── gcmelee.lua            Rag's v320 (not in this repo)
+    ├── gcmage.lua             Rag's v320 (not in this repo)
+    └── gcdisplay-rag.lua      Rag's v320 (not in this repo)
 ```
 
 - `PUP.lua` goes in your character folder.
