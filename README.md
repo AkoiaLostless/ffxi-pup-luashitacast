@@ -102,7 +102,6 @@ With LuAshitacast's Horizon Mode on, your normal gear check runs only once after
 - **Pet weaponskill gear:** `Pet_WS` and `Pet_RNGWS` don't go on when the automaton reaches TP or starts a weaponskill.
 - **Pet magic by spell type:** the profile can't react to which spell the automaton casts. That's why the pet magic legs follow `/pupmode` (Heals / Mage) instead.
 - **Automaton engaging or disengaging:** `Pet_Only_Tp_*`, the `/pupmode` sets and `Idle_Pet` don't switch when the automaton engages, disengages or is deployed.
-- **Overdrive ending:** the `Overdrive` set stays on until your next action after the buff wears off.
 - **Movement, town and buff changes:** `Movement`, `Town`, Aftermath / Mjollnir Haste TP sets and similar only change on your next action.
 
 Typing any profile command (for example `/pupdebug`) counts as an action and makes the gear check run once.
