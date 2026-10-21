@@ -1,5 +1,5 @@
 --[[
-gcinclude-pup.lua - Puppetmaster addendum for Rag's LuAshitacast common files (version 310).
+gcinclude-pup.lua - Puppetmaster addendum for Rag's LuAshitacast common files (version 320).
 
 This file sits in common\ next to Rag's files and does NOT change any of them:
     gcmelee.lua, gcmage.lua, gcinclude-rag.lua, gcdisplay-rag.lua
@@ -31,7 +31,7 @@ gcmelee = gFunc.LoadFile('common\\gcmelee.lua')
 -- Both files load gcinclude-rag.lua (and through it gcdisplay-rag.lua). Every common file reads them through the
 -- globals gcinclude / gcdisplay at call time, and no cycles or toggles exist yet, so everyone shares the last loaded copy.
 
-local VERSION = 310
+local VERSION = 320
 
 local settings = {
     pet_ws_tp_threshold = 950,
@@ -96,7 +96,7 @@ local RequiredSets = T{
     'WS','WS_HighAcc',
     'Idle_Pet','Pet_Dt','Pet_Only_Tp_LowAcc','Pet_Only_Tp_Hybrid','Pet_Only_Tp_HighAcc','TP_Hybrid',
     'Tank','Melee','Ranged','Mage','Heals','Pet_WS','Pet_RNGWS','Pet_Magic','Pet_Magic_Cure','Pet_Magic_Black',
-    'Activate','Repair',
+    'Activate','Repair','WeaponBash',
     'Fire_Maneuver','Ice_Maneuver','Wind_Maneuver','Earth_Maneuver','Thunder_Maneuver','Water_Maneuver','Light_Maneuver','Dark_Maneuver',
     'Overdrive','Ventriloquy','Role_Reversal',
     'Cure','Cure5','Cursna','Enhancing','Phalanx','PhalanxExtra','Stoneskin','StoneskinExtra','Spikes',
@@ -316,6 +316,7 @@ end
 
 function gcpup.DoAbility(sets)
     gcmelee.DoAbility()
+    gcmelee.DoWeaponBash() -- Rag's v320 WeaponBash set for Weapon Bash on /DRK
 
     local action = gData.GetAction()
 

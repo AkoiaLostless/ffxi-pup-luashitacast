@@ -2,13 +2,13 @@ PUP LuAshitacast profile - Command reference
 =============================================
 
 Puppetmaster profile for LuAshitacast (Ashita v4), built on Rag's
-LuAshitacast (RAGS) v310 common files. Level-75 era (Horizon).
+LuAshitacast (RAGS) v320 common files. Level-75 era (Horizon).
 
 Files:
     PUP.lua                    your gear sets and settings
     common\gcinclude-pup.lua   PUP addendum (all PUP-specific logic)
 
-Also needed in the same common folder, from Rag's LuAshitacast v310
+Also needed in the same common folder, from Rag's LuAshitacast v320
 (https://github.com/yzyii/luashitacast), not included in this repo:
     common\gcmelee.lua
     common\gcmage.lua
@@ -91,6 +91,9 @@ Other job abilities
 Resting on an MP subjob
     On a DRK, WHM, RDM, BLM or BLU subjob, Resting_MPSub (your Dark Staff)
     goes on over Rag's Resting set, after the same 16 second wait.
+
+/DRK extras (Rag v320)
+    Weapon Bash -> WeaponBash. Stun with /mode Accuracy -> StunACC.
 
 Subjob TP pieces
     While engaged: TP_DRG on /DRG, TP_THF on /THF.

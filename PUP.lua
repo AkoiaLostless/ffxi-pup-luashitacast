@@ -1,7 +1,7 @@
 local profile = {}
 
 --[[
-Puppetmaster profile for Rag's LuAshitacast common files (version 310).
+Puppetmaster profile for Rag's LuAshitacast common files (version 320).
 
 Install:
     PUP.lua                    -> your character folder (replaces your old PUP.lua)
@@ -168,6 +168,7 @@ local sets = {
     },
     Ventriloquy = {},
     Role_Reversal = {},
+    WeaponBash = {}, -- Weapon Bash on /DRK
 
     --[[ Your own spellcasting (subjob) ]]
     -- gcmage picks these for your subjob spells. Any gcmage set not listed here (Nuke, Dark, Stun, Banish, etc.) is added empty automatically,
@@ -183,6 +184,7 @@ local sets = {
     EnfeeblingINT = {},
     EnfeeblingACC = {}, -- Used with /mode Accuracy and for accuracy spells (Sleep, Bind, Gravity, Silence, ...)
     Spikes = {},
+    StunACC = {}, -- Stun on /DRK with /mode Accuracy
 
     Preshot = {}, -- This set is pointless until ToAU+ when Snapshot on equipment is available
     Midshot = {}, -- Your ranged attack set (used with Preshot)
