@@ -7,10 +7,13 @@ LuAshitacast (RAGS) v310 common files. Level-75 era (Horizon).
 Files:
     PUP.lua                    your gear sets and settings
     common\gcinclude-pup.lua   PUP addendum (all PUP-specific logic)
-    common\gcmelee.lua         RAGS, unmodified
-    common\gcmage.lua          RAGS, unmodified
-    common\gcinclude-rag.lua   RAGS, unmodified
-    common\gcdisplay-rag.lua   RAGS, unmodified
+
+Also needed in the same common folder, from Rag's LuAshitacast v310
+(https://github.com/yzyii/luashitacast), not included in this repo:
+    common\gcmelee.lua
+    common\gcmage.lua
+    common\gcinclude-rag.lua
+    common\gcdisplay-rag.lua
 
 All commands below are typed in game as shown (for example /pupmode).
 They are aliases for /lac fwd <command>.

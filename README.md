@@ -9,10 +9,15 @@ Copy into `Ashita/config/addons/luashitacast/<CharacterName_ID>/`:
 ```
 PUP.lua
 common/gcinclude-pup.lua   PUP addendum (all PUP-specific logic)
-common/gcinclude-rag.lua   RAGS v310, unmodified
-common/gcmelee.lua         RAGS v310, unmodified
-common/gcmage.lua          RAGS v310, unmodified
-common/gcdisplay-rag.lua   RAGS, unmodified
+```
+
+It also needs Rag's v310 common files in the same `common` folder. They are not in this repo: get them from RAGS (link below).
+
+```
+common/gcinclude-rag.lua
+common/gcmelee.lua
+common/gcmage.lua
+common/gcdisplay-rag.lua
 ```
 
 ## Rules
