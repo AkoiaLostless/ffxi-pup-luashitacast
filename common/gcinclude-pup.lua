@@ -289,6 +289,7 @@ function gcpup.DoDefault(sets)
 
     gFunc.EquipSet(gcinclude.BuildLockableSet(gData.GetEquipment()))
 
+    -- TODO (2026-10-21): Ross reports Resting_MPSub is not going on in game. Fix once he can test it reliably.
     -- Alternate resting set: on an MP subjob, Resting_MPSub (Dark Staff) goes on over Rag's Resting set automatically.
     -- It uses the same 16 second wait Rag uses before his Resting set, and goes on last so nothing above
     -- (weapon loadouts, lockable set) can put your weapon back over the staff.
