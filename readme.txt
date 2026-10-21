@@ -208,8 +208,6 @@ action:
   spell, which is why pet magic legs follow /pupmode (Heals / Mage).
 - Automaton engaging, disengaging or being deployed: Pet_Only_Tp_*,
   the /pupmode sets and Idle_Pet do not switch by themselves.
-- Resting: Rag's Resting set and Resting_MPSub (Dark Staff) wait
-  16 seconds after you sit, so they will not go on by themselves.
 - Overdrive ending: the Overdrive set stays on until your next action.
 - Movement, town and buff changes (Movement, Town, Aftermath /
   Mjollnir Haste TP sets) only change on your next action.
