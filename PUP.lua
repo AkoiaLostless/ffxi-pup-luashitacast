@@ -112,6 +112,8 @@ local sets = {
     TP_DRG = {
         -- Ear1 = 'Wyvern Earring',
     },
+    Jump = {}, -- /DRG: worn when you use Jump
+    High_Jump = {}, -- /DRG: worn when you use High Jump
     TP_THF = {
         -- Ear2 = 'Pilferer\'s Earring',
     },

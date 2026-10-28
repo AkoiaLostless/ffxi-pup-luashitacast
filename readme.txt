@@ -99,6 +99,9 @@ Resting on an MP subjob
 Subjob TP pieces
     While engaged: TP_DRG on /DRG, TP_THF on /THF.
 
+/DRG Jumps
+    Jump -> Jump, High Jump -> High_Jump.
+
 Automaton out
     Idle_Pet is layered over Idle while the automaton is out and idle.
 
