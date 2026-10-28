@@ -91,7 +91,7 @@ local RequiredSets = T{
     'DT','DTNight','MDT','FireRes','IceRes','LightningRes','LightningRes_NoBarthunder','LightningRes_WithBarthunderCarol',
     'EarthRes','WindRes','WaterRes','Evasion','Override',
     'Precast','SIRD','SIRD_NIN','Haste','ConserveMP',
-    'TP_LowAcc','TP_Aftermath','TP_Mjollnir_Haste','TP_HighAcc','TP_DRG','Jump','High_Jump','TP_THF',
+    'TP_LowAcc','TP_Aftermath','TP_Mjollnir_Haste','TP_HighAcc','TP_DRG','Jump','HighJump','TP_THF',
     'Weapon_Loadout_1','Weapon_Loadout_2','Weapon_Loadout_3',
     'WS','WS_HighAcc',
     'Idle_Pet','Pet_Dt','Pet_Only_Tp_LowAcc','Pet_Only_Tp_Hybrid','Pet_Only_Tp_HighAcc','TP_Hybrid',
@@ -342,7 +342,8 @@ function gcpup.DoAbility(sets)
     elseif (action.Name == 'Jump') then
         gFunc.EquipSet(sets.Jump)
     elseif (action.Name == 'High Jump') then
-        gFunc.EquipSet(sets.High_Jump)
+        gFunc.EquipSet(sets.Jump)
+        gFunc.EquipSet(sets.HighJump)
     end
 end
 

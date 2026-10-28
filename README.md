@@ -42,7 +42,7 @@ Ashita/config/addons/luashitacast/
 - **Resting on an MP subjob:** on DRK, WHM, RDM, BLM or BLU, `Resting_MPSub` (your Dark Staff) goes on over Rag's Resting set after the same 16 second wait.
 - **/DRK extras (Rag v320):** Weapon Bash → `WeaponBash`; Stun with `/mode` Accuracy → `StunACC`.
 - **Subjob TP pieces:** while engaged, `TP_DRG` on /DRG and `TP_THF` on /THF.
-- **/DRG Jumps:** Jump → `Jump`, High Jump → `High_Jump`.
+- **/DRG Jumps:** Jump → `Jump`, High Jump → `Jump` with `HighJump` layered on top.
 - **Automaton out:** `Idle_Pet` is layered over Idle while the automaton is out and you are idle.
 
 ## Rag's commands

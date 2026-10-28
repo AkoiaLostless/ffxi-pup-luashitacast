@@ -100,7 +100,8 @@ Subjob TP pieces
     While engaged: TP_DRG on /DRG, TP_THF on /THF.
 
 /DRG Jumps
-    Jump -> Jump, High Jump -> High_Jump.
+    Jump -> Jump, High Jump -> Jump with HighJump
+    layered on top.
 
 Automaton out
     Idle_Pet is layered over Idle while the automaton is out and idle.
