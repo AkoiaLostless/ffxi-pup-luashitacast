@@ -54,6 +54,9 @@ local restStart = nil
 local pendingManeuverSet = nil
 local pendingManeuverExpires = 0
 
+-- Weapon slots a gear set can claim back from Rag's weapon loadout (see DoDefault)
+local WeaponSlots = T{ 'Main','Sub','Range' }
+
 local PupModeTable = {
     [1] = 'Tank',
     [2] = 'Melee',
@@ -217,8 +220,42 @@ local function GetPetAction()
 end
 
 function gcpup.DoDefault(sets)
-    gcmelee.DoDefault(settings.max_hp_in_idle_with_regen_gear_equipped)
+    -- Rag's gcmelee puts your Weapon_Loadout on after the normal gear sets, so a weapon you list in a set
+    -- (Idle, TP, Pet_Only_Tp, /pupmode sets, ...) gets replaced by the loadout. To let the set win, every
+    -- Main / Sub / Range a set lists before the loadout is remembered and put back on right after it.
+    local setWeapons = {}
+    local realEquipSet = gFunc.EquipSet
+    gFunc.EquipSet = function(set)
+        local name = (type(set) == 'string') and set or nil
+        local t = (name ~= nil) and sets[name] or set
+        if (type(t) == 'table' and not (name ~= nil and string.startswith(name, 'Weapon_Loadout_'))) then
+            for _, slot in ipairs(WeaponSlots) do
+                local item = t[slot]
+                -- An empty '' or 'ignore' in a set means no weapon there, so the loadout's stays on
+                if (item ~= nil and item ~= '' and item ~= 'ignore') then
+                    setWeapons[slot] = item
+                end
+            end
+        end
+        return realEquipSet(set)
+    end
+    local ok, err = pcall(function()
+        gcmelee.DoDefault(settings.max_hp_in_idle_with_regen_gear_equipped)
+        gcpup.DoDefaultLayers(sets)
+        gcmelee.DoDefaultOverride()
+    end)
+    gFunc.EquipSet = realEquipSet
+    if (not ok) then
+        error(err, 0)
+    end
+    if (next(setWeapons) ~= nil) then
+        gFunc.EquipSet(setWeapons)
+    end
 
+    gcpup.DoDefaultAfterOverride(sets)
+end
+
+function gcpup.DoDefaultLayers(sets)
     local player = gData.GetPlayer()
     local pet = gData.GetPet()
     local pupMode = gcdisplay.GetCycle('PupMode')
@@ -245,8 +282,12 @@ function gcpup.DoDefault(sets)
             gFunc.EquipSet(sets.Idle_Pet)
         end
     end
+end
 
-    gcmelee.DoDefaultOverride()
+function gcpup.DoDefaultAfterOverride(sets)
+    local player = gData.GetPlayer()
+    local pet = gData.GetPet()
+    local pupMode = gcdisplay.GetCycle('PupMode')
 
     if (pet ~= nil and pet.Status == 'Engaged' and PetWSIdleSets:contains(gcdisplay.IdleSet)) then
         local petAction = GetPetAction()

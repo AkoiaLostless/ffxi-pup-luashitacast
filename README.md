@@ -43,6 +43,7 @@ Ashita/config/addons/luashitacast/
 - **/DRK extras (Rag v320):** Weapon Bash → `WeaponBash`; Stun with `/mode` Accuracy → `StunACC`.
 - **Subjob TP pieces:** while engaged, `TP_DRG` on /DRG and `TP_THF` on /THF.
 - **/DRG Jumps:** Jump → `Jump`, High Jump → `Jump` with `HighJump` layered on top.
+- **Weapons in your sets beat the weapon loadout:** a Main, Sub or Range you list in a gear set (Idle, TP, `Pet_Only_Tp_*`, `/pupmode` sets and so on) stays on instead of being replaced by your `/wl` weapon loadout. Slots a set leaves out or sets to `''` keep the loadout's weapon.
 - **Automaton out:** `Idle_Pet` is layered over Idle while the automaton is out and you are idle.
 
 ## Rag's commands
