@@ -381,7 +381,12 @@ function gcpup.DoAbility(sets)
     elseif (string.match(action.Name, 'Repair')) then
         gFunc.EquipSet(sets.Repair)
     elseif (string.match(action.Name, 'Maintenance')) then
-        gFunc.EquipSet(sets.Maintenance)
+        -- An empty Maintenance set falls back to Repair, so older PUP.lua files still get their oil
+        if (next(sets.Maintenance) ~= nil) then
+            gFunc.EquipSet(sets.Maintenance)
+        else
+            gFunc.EquipSet(sets.Repair)
+        end
     elseif (string.contains(action.Name, 'Maneuver')) then
         -- 'Fire Maneuver' -> sets.Fire_Maneuver, and so on for all 8 elements. It goes on before the maneuver is sent,
         -- and DoDefault keeps it on for maneuver_lock_seconds after the maneuver finishes.
