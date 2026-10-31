@@ -109,6 +109,10 @@ Weapons in your sets beat the weapon loadout
     /wl weapon loadout. Slots a set leaves out or sets to '' keep the
     loadout's weapon.
 
+Automaton casting
+    Pet_Casting goes on while the automaton is casting a spell. Disabled
+    by Horizon Mode, so it only works on servers without it.
+
 Automaton out
     Idle_Pet is layered over Idle while the automaton is out and idle.
 
@@ -203,7 +207,8 @@ action:
 - Pet weaponskill gear: Pet_WS / Pet_RNGWS do not go on when the
   automaton reaches TP or starts a weaponskill.
 - Pet magic by spell type: the profile cannot react to the automaton's
-  spell, which is why pet magic legs follow /pupmode (Heals / Mage).
+  spell, which is why pet magic legs follow /pupmode (Heals / Mage)
+  and why Pet_Casting never goes on.
 - Automaton engaging, disengaging or being deployed: Pet_Only_Tp_*,
   the /pupmode sets and Idle_Pet do not switch by themselves.
 - Movement, town and buff changes (Movement, Town, Aftermath /

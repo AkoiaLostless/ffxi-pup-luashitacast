@@ -147,6 +147,8 @@ local sets = {
     Pet_Magic_Black = { -- Layered on Pet_Magic in /pupmode Mage
         -- Legs = '',
     },
+    Pet_Casting = { -- Worn only while the automaton is casting a spell. DISABLED BY HORIZON MODE: LuAshitacast's Horizon Mode never checks gear when the automaton starts casting, so this only works on servers without it
+    },
 
     --[[ Your weaponskills ]]
     WS = {}, -- Every weaponskill

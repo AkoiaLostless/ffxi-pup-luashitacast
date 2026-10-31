@@ -98,7 +98,7 @@ local RequiredSets = T{
     'Weapon_Loadout_1','Weapon_Loadout_2','Weapon_Loadout_3',
     'WS','WS_HighAcc',
     'Idle_Pet','Pet_Dt','Pet_Only_Tp_LowAcc','Pet_Only_Tp_Hybrid','Pet_Only_Tp_HighAcc','TP_Hybrid',
-    'Tank','Melee','Ranged','Mage','Heals','Pet_WS','Pet_RNGWS','Pet_Magic','Pet_Magic_Cure','Pet_Magic_Black',
+    'Tank','Melee','Ranged','Mage','Heals','Pet_WS','Pet_RNGWS','Pet_Magic','Pet_Magic_Cure','Pet_Magic_Black','Pet_Casting',
     'Activate','Repair','WeaponBash',
     'Fire_Maneuver','Ice_Maneuver','Wind_Maneuver','Earth_Maneuver','Thunder_Maneuver','Water_Maneuver','Light_Maneuver','Dark_Maneuver',
     'Overdrive','Ventriloquy','Role_Reversal',
@@ -317,6 +317,15 @@ function gcpup.DoDefaultAfterOverride(sets)
         elseif (pupMode == 'Mage') then
             gFunc.EquipSet(sets.Pet_Magic)
             gFunc.EquipSet(sets.Pet_Magic_Black)
+        end
+    end
+
+    -- Pet_Casting: only while the automaton is casting. Horizon Mode never runs this check when the automaton
+    -- starts a spell, so on Horizon it never goes on; it is here for servers that don't use Horizon Mode.
+    if (pet ~= nil and PetWSIdleSets:contains(gcdisplay.IdleSet)) then
+        local petAction = GetPetAction()
+        if (petAction ~= nil and petAction.ActionType == 'Spell') then
+            gFunc.EquipSet(sets.Pet_Casting)
         end
     end
 
