@@ -83,7 +83,8 @@ Maneuvers
 
 Other job abilities
     Activate / Deus Ex Automata -> Activate
-    Repair / Maintenance        -> Repair
+    Repair                      -> Repair
+    Maintenance                 -> Maintenance (Automat. Oil +2)
     Overdrive                   -> Overdrive (also kept on for the whole
                                    time the Overdrive buff is up)
     Ventriloquy                 -> Ventriloquy

@@ -99,7 +99,7 @@ local RequiredSets = T{
     'WS','WS_HighAcc',
     'Idle_Pet','Pet_Dt','Pet_Only_Tp_LowAcc','Pet_Only_Tp_Hybrid','Pet_Only_Tp_HighAcc','TP_Hybrid',
     'Tank','Melee','Ranged','Mage','Heals','Pet_WS','Pet_RNGWS','Pet_Magic','Pet_Magic_Cure','Pet_Magic_Black','Pet_Casting','Pet_Casting_Cure','Pet_Casting_Black',
-    'Activate','Repair','WeaponBash',
+    'Activate','Repair','Maintenance','WeaponBash',
     'Fire_Maneuver','Ice_Maneuver','Wind_Maneuver','Earth_Maneuver','Thunder_Maneuver','Water_Maneuver','Light_Maneuver','Dark_Maneuver',
     'Overdrive','Ventriloquy','Role_Reversal',
     'Cure','Cure5','Cursna','Enhancing','Phalanx','PhalanxExtra','Stoneskin','StoneskinExtra','Spikes',
@@ -378,8 +378,10 @@ function gcpup.DoAbility(sets)
 
     if (action.Name == 'Activate' or action.Name == 'Deus Ex Automata') then
         gFunc.EquipSet(sets.Activate)
-    elseif (string.match(action.Name, 'Repair') or string.match(action.Name, 'Maintenance')) then
+    elseif (string.match(action.Name, 'Repair')) then
         gFunc.EquipSet(sets.Repair)
+    elseif (string.match(action.Name, 'Maintenance')) then
+        gFunc.EquipSet(sets.Maintenance)
     elseif (string.contains(action.Name, 'Maneuver')) then
         -- 'Fire Maneuver' -> sets.Fire_Maneuver, and so on for all 8 elements. It goes on before the maneuver is sent,
         -- and DoDefault keeps it on for maneuver_lock_seconds after the maneuver finishes.

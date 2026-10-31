@@ -165,6 +165,9 @@ local sets = {
     Repair = {
         -- Ammo = 'Automat. Oil +3', -- Repair needs oil in the ammo slot
     },
+    Maintenance = {
+        Ammo = 'Automat. Oil +2', -- Maintenance uses the oil in the ammo slot for its effect
+    },
     -- Worn only while you use the maneuver, not for the length of the buff
     Fire_Maneuver = {}, -- STR
     Ice_Maneuver = {}, -- INT

@@ -38,7 +38,7 @@ Ashita/config/addons/luashitacast/
 ## Automatic PUP behavior
 
 - **Maneuvers:** using a maneuver puts on that element's set before the maneuver is sent and holds it 0.5 seconds after it finishes: `Fire_Maneuver`, `Ice_Maneuver`, `Wind_Maneuver`, `Earth_Maneuver`, `Thunder_Maneuver`, `Water_Maneuver`, `Light_Maneuver`, `Dark_Maneuver`.
-- **Other job abilities:** Activate / Deus Ex Automata → `Activate`, Repair / Maintenance → `Repair`, Overdrive → `Overdrive` (also kept on while the buff is up), Ventriloquy → `Ventriloquy`, Role Reversal → `Role_Reversal`.
+- **Other job abilities:** Activate / Deus Ex Automata → `Activate`, Repair → `Repair`, Maintenance → `Maintenance` (Automat. Oil +2), Overdrive → `Overdrive` (also kept on while the buff is up), Ventriloquy → `Ventriloquy`, Role Reversal → `Role_Reversal`.
 - **Resting on an MP subjob:** on DRK, WHM, RDM, BLM or BLU, `Resting_MPSub` (your Dark Staff) goes on over Rag's Resting set after the same 16 second wait.
 - **/DRK extras (Rag v320):** Weapon Bash → `WeaponBash`; Stun with `/mode` Accuracy → `StunACC`.
 - **Subjob TP pieces:** while engaged, `TP_DRG` on /DRG and `TP_THF` on /THF.
