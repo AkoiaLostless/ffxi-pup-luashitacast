@@ -321,8 +321,8 @@ function gcpup.DoDefaultAfterOverride(sets)
     end
 
     -- Pet_Casting: only while the automaton is casting. Horizon Mode never runs this check when the automaton
-    -- starts a spell, so on Horizon it never goes on; it is here for servers that don't use Horizon Mode.
-    if (pet ~= nil and PetWSIdleSets:contains(gcdisplay.IdleSet)) then
+    -- starts a spell, so it is switched off whenever LuAshitacast's Horizon Mode checkbox is on.
+    if (not gSettings.HorizonMode and pet ~= nil and PetWSIdleSets:contains(gcdisplay.IdleSet)) then
         local petAction = GetPetAction()
         if (petAction ~= nil and petAction.ActionType == 'Spell') then
             gFunc.EquipSet(sets.Pet_Casting)
