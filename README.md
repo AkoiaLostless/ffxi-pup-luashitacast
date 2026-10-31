@@ -44,7 +44,7 @@ Ashita/config/addons/luashitacast/
 - **Subjob TP pieces:** while engaged, `TP_DRG` on /DRG and `TP_THF` on /THF.
 - **/DRG Jumps:** Jump → `Jump`, High Jump → `Jump` with `HighJump` layered on top.
 - **Weapons in your sets beat the weapon loadout:** a Main, Sub or Range you list in a gear set (Idle, TP, `Pet_Only_Tp_*`, `/pupmode` sets and so on) stays on instead of being replaced by your `/wl` weapon loadout. Slots a set leaves out or sets to `''` keep the loadout's weapon.
-- **Automaton casting:** `Pet_Casting` goes on while the automaton is casting a spell. Disabled by Horizon Mode, so it only works on servers without it.
+- **Automaton casting:** `Pet_Casting` goes on while the automaton is casting a spell, plus `Pet_Casting_Cure` for healing spells or `Pet_Casting_Black` for everything else. Disabled by Horizon Mode, so it only works on servers without it.
 - **Automaton out:** `Idle_Pet` is layered over Idle while the automaton is out and you are idle.
 
 ## Rag's commands
@@ -98,7 +98,7 @@ Each one switches your idle set to that set. Type the same command again to go b
 With LuAshitacast's Horizon Mode on, your normal gear check runs only once after each of your own actions (an ability, spell, weaponskill, ranged attack, item or `/lac fwd` command). It does not keep re-checking in the background. Your action gear (job abilities, maneuvers, precast, midcast, weaponskills) still works as normal. Anything that waits for something else to happen does not update until your next action:
 
 - **Pet weaponskill gear:** `Pet_WS` and `Pet_RNGWS` don't go on when the automaton reaches TP or starts a weaponskill.
-- **Pet magic by spell type:** the profile can't react to which spell the automaton casts. That's why the pet magic legs follow `/pupmode` (Heals / Mage) instead, and why `Pet_Casting` never goes on.
+- **Pet magic by spell type:** the profile can't react to which spell the automaton casts. That's why the pet magic legs follow `/pupmode` (Heals / Mage) instead, and why the `Pet_Casting` sets never go on.
 - **Automaton engaging or disengaging:** `Pet_Only_Tp_*`, the `/pupmode` sets and `Idle_Pet` don't switch when the automaton engages, disengages or is deployed.
 - **Movement, town and buff changes:** `Movement`, `Town`, Aftermath / Mjollnir Haste TP sets and similar only change on your next action.
 

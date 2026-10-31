@@ -98,7 +98,7 @@ local RequiredSets = T{
     'Weapon_Loadout_1','Weapon_Loadout_2','Weapon_Loadout_3',
     'WS','WS_HighAcc',
     'Idle_Pet','Pet_Dt','Pet_Only_Tp_LowAcc','Pet_Only_Tp_Hybrid','Pet_Only_Tp_HighAcc','TP_Hybrid',
-    'Tank','Melee','Ranged','Mage','Heals','Pet_WS','Pet_RNGWS','Pet_Magic','Pet_Magic_Cure','Pet_Magic_Black','Pet_Casting',
+    'Tank','Melee','Ranged','Mage','Heals','Pet_WS','Pet_RNGWS','Pet_Magic','Pet_Magic_Cure','Pet_Magic_Black','Pet_Casting','Pet_Casting_Cure','Pet_Casting_Black',
     'Activate','Repair','WeaponBash',
     'Fire_Maneuver','Ice_Maneuver','Wind_Maneuver','Earth_Maneuver','Thunder_Maneuver','Water_Maneuver','Light_Maneuver','Dark_Maneuver',
     'Overdrive','Ventriloquy','Role_Reversal',
@@ -325,7 +325,13 @@ function gcpup.DoDefaultAfterOverride(sets)
     if (not gSettings.HorizonMode and pet ~= nil and PetWSIdleSets:contains(gcdisplay.IdleSet)) then
         local petAction = GetPetAction()
         if (petAction ~= nil and petAction.ActionType == 'Spell') then
+            -- Same split as /pupmode Heals and Mage: healing spells get Pet_Casting_Cure, everything else Pet_Casting_Black
             gFunc.EquipSet(sets.Pet_Casting)
+            if (petAction.Skill == 'Healing Magic' or string.match(petAction.Name, '^Cur')) then
+                gFunc.EquipSet(sets.Pet_Casting_Cure)
+            else
+                gFunc.EquipSet(sets.Pet_Casting_Black)
+            end
         end
     end
 

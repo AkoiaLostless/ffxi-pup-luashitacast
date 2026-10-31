@@ -149,6 +149,12 @@ local sets = {
     },
     Pet_Casting = { -- Worn only while the automaton is casting a spell. DISABLED BY HORIZON MODE: LuAshitacast's Horizon Mode never checks gear when the automaton starts casting, so this only works on servers without it
     },
+    Pet_Casting_Cure = { -- Layered on Pet_Casting while the automaton casts a healing spell. DISABLED BY HORIZON MODE
+        -- Legs = '',
+    },
+    Pet_Casting_Black = { -- Layered on Pet_Casting while the automaton casts any other spell. DISABLED BY HORIZON MODE
+        -- Legs = '',
+    },
 
     --[[ Your weaponskills ]]
     WS = {}, -- Every weaponskill
