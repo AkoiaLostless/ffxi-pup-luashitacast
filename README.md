@@ -27,7 +27,7 @@ Ashita/config/addons/luashitacast/
 
 | Command | What it does |
 |---|---|
-| `/pupmode` | Cycles the automaton mode: Tank → Melee → Ranged → Mage → Heals. While the automaton is engaged, the set with that name is worn on top. Pet magic legs follow it: Heals → `Pet_Magic` + `Pet_Magic_Cure`, Mage → `Pet_Magic` + `Pet_Magic_Black`. |
+| `/pupmode` | Cycles the automaton mode: Tank → Melee → Ranged → Mage → Heals. While the automaton is out, the set with that name is worn on top (over `Idle_Pet` when you're idle), so pet HP/MP+ pieces are already on before it engages. Pet magic legs follow it: Heals → `Pet_Magic` + `Pet_Magic_Cure`, Mage → `Pet_Magic` + `Pet_Magic_Black`. |
 | `/pupmode <name>` | Jumps straight to a mode, e.g. `/pupmode ranged`. |
 | `/tp` (or `/tpset`) | Cycles LowAcc → Hybrid → HighAcc. Engaged: `TP_LowAcc` is the base, plus `TP_Hybrid` or `TP_HighAcc`. Automaton engaged and you not: `Pet_Only_Tp_LowAcc` / `_Hybrid` / `_HighAcc`. Weaponskills: `WS`, plus `WS_HighAcc` in HighAcc. |
 | `/petdt` | Toggles `Pet_Dt` on top of everything else. |

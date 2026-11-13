@@ -131,7 +131,7 @@ local sets = {
     Pet_Only_Tp_Hybrid = {},
     Pet_Only_Tp_HighAcc = {},
 
-    -- One-off items to equip while the automaton is engaged, based on /pupmode. An example would be Pet HP+ pieces for Tank mode. Can be empty but do not delete.
+    -- One-off items worn the whole time the automaton is out, based on /pupmode, layered over Idle_Pet. An example would be Pet HP+ pieces for Tank mode. Can be empty but do not delete.
     Tank = {},
     Melee = {},
     Ranged = {},

@@ -31,8 +31,10 @@ They are aliases for /lac fwd <command>.
 
 /pupmode
     Cycles the automaton mode: Tank -> Melee -> Ranged -> Mage -> Heals.
-    While the automaton is engaged, the set with the same name
-    (Tank, Melee, Ranged, Mage, Heals) is worn on top of your other gear.
+    While the automaton is out, the set with the same name
+    (Tank, Melee, Ranged, Mage, Heals) is worn on top of your other gear,
+    over Idle_Pet when you are idle, so pet HP/MP+ pieces are already on
+    before it engages.
     Pet magic legs also follow it:
         Heals -> Pet_Magic + Pet_Magic_Cure
         Mage  -> Pet_Magic + Pet_Magic_Black

@@ -277,10 +277,12 @@ function gcpup.DoDefaultLayers(sets)
             if (player.Status ~= 'Engaged') then
                 gFunc.EquipSet(sets['Pet_Only_Tp_' .. tpSet])
             end
-            gFunc.EquipSet(sets[pupMode])
         elseif (player.Status == 'Idle') then
             gFunc.EquipSet(sets.Idle_Pet)
         end
+        -- The /pupmode set (Tank, Melee, ...) stays on the whole time the automaton is out, layered over Idle_Pet,
+        -- so pet HP/MP+ pieces raise its max HP/MP before it engages instead of only once it's fighting.
+        gFunc.EquipSet(sets[pupMode])
     end
 end
 
