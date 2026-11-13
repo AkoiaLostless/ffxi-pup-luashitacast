@@ -122,39 +122,49 @@ local sets = {
     Weapon_Loadout_2 = {},
     Weapon_Loadout_3 = {},
 
-    --[[ Automaton sets ]]
-    Idle_Pet = {}, -- Layered over Idle while the automaton is out
-    Pet_Dt = {}, -- Toggled with /petdt
+    --[[ Automaton sets, in the order they go on (later ones layer on top) ]]
 
-    -- The automaton is engaged and you are not (/tp picks one). When you are engaged too, your TP_ sets above are used instead.
+    -- Automaton out, you and it both idle
+    Idle_Pet = {}, -- Layered over Idle
+
+    -- Automaton engaged, you not engaged (/tp picks one). When you are engaged too, your TP_ sets above are used instead.
     Pet_Only_Tp_LowAcc = {},
     Pet_Only_Tp_Hybrid = {},
     Pet_Only_Tp_HighAcc = {},
 
-    -- One-off items worn the whole time the automaton is out, based on /pupmode, layered over Idle_Pet. An example would be Pet HP+ pieces for Tank mode. Can be empty but do not delete.
+    -- /pupmode sets: worn the whole time the automaton is out (idle or engaged), layered over Idle_Pet / Pet_Only_Tp_ / your TP sets.
+    -- Put pet HP/MP+ pieces here so its max HP/MP is already up before it engages. Can be empty but do not delete.
     Tank = {},
     Melee = {},
     Ranged = {},
     Mage = {},
     Heals = {},
 
-    Pet_WS = {}, -- Automaton melee weaponskills (Melee / Tank mode)
-    Pet_RNGWS = {}, -- Automaton ranged weaponskills (Ranged mode)
-    Pet_Magic = {}, -- Worn in Heals or Mage mode
+    -- Automaton weaponskills: while it is engaged and above pet_ws_tp_threshold TP, or doing the weaponskill. Toggle with /petws.
+    Pet_WS = {}, -- Melee weaponskills (/pupmode Melee or Tank)
+    Pet_RNGWS = {}, -- Ranged weaponskills (/pupmode Ranged)
+
+    -- Pet magic: worn the whole time in /pupmode Heals or Mage (works with Horizon Mode)
+    Pet_Magic = {},
     Pet_Magic_Cure = { -- Layered on Pet_Magic in /pupmode Heals
         -- Legs = '',
     },
     Pet_Magic_Black = { -- Layered on Pet_Magic in /pupmode Mage
         -- Legs = '',
     },
-    Pet_Casting = { -- Worn only while the automaton is casting a spell. DISABLED BY HORIZON MODE: LuAshitacast's Horizon Mode never checks gear when the automaton starts casting, so this only works on servers without it
-    },
-    Pet_Casting_Cure = { -- Layered on Pet_Casting while the automaton casts a healing spell. DISABLED BY HORIZON MODE
+
+    -- Pet casting: worn only while the automaton is casting a spell, in any /pupmode, layered over Pet_Magic.
+    -- DISABLED BY HORIZON MODE: LuAshitacast's Horizon Mode never checks gear when the automaton starts casting, so these only work on servers without it.
+    Pet_Casting = {}, -- Every spell
+    Pet_Casting_Cure = { -- Layered on Pet_Casting for healing spells
         -- Legs = '',
     },
-    Pet_Casting_Black = { -- Layered on Pet_Casting while the automaton casts any other spell. DISABLED BY HORIZON MODE
+    Pet_Casting_Black = { -- Layered on Pet_Casting for every other spell
         -- Legs = '',
     },
+
+    -- Toggled with /petdt while the automaton is out; goes on over every automaton set above
+    Pet_Dt = {},
 
     --[[ Your weaponskills ]]
     WS = {}, -- Every weaponskill
