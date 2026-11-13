@@ -92,6 +92,12 @@ Other job abilities
     Ventriloquy                 -> Ventriloquy
     Role Reversal               -> Role_Reversal
 
+Full MP on a mage subjob (RDM / WHM / BLM / BLU)
+    IdleMaxMP goes on while idle in a Normal or Alternate idle set with
+    your MP at or above your max (from /setmp or the *SJMaxMP settings in
+    PUP.lua), and while resting once MP reaches 95%. Same rule as Rag's
+    mage profiles.
+
 Resting on an MP subjob
     On a DRK, WHM, RDM, BLM or BLU subjob, Resting_MPSub (your Dark Staff)
     goes on over Rag's Resting set, after the same 16 second wait.
@@ -189,7 +195,8 @@ same command again to go back to the previous one.
     EnfeeblingACC and the accuracy versions of gcmage's sets.
 
 /setmp <number>
-    Your max MP, used by gcmage for MP-based gear checks. Overrides the
+    Your max MP, used by gcmage for MP-based gear checks and for
+    IdleMaxMP. Overrides the
     ninSJMaxMP / whmSJMaxMP / blmSJMaxMP / rdmSJMaxMP / drkSJMaxMP settings.
 /addmp <number>
     Extra MP added to that value.

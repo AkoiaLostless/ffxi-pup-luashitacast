@@ -45,11 +45,18 @@ local settings = {
     blmSJMaxMP = nil,
     rdmSJMaxMP = nil,
     drkSJMaxMP = nil,
+    bluSJMaxMP = nil,
 }
 
 -- Subjobs that give you MP. Only these get Resting_MPSub while resting.
 local MPSubjobs = T{ 'DRK','WHM','RDM','BLM','BLU' }
 local restStart = nil
+-- Mage subjobs. Only these get IdleMaxMP (full MP while idle, and from 95% MP while resting), the way Rag's gcmage does it.
+local MageSubjobs = T{ 'RDM','WHM','BLM','BLU' }
+-- /setmp and /addmp, kept here as well because gcmage keeps its own copies private. IdleMaxMP uses the same numbers gcmage does.
+local setMP = 0
+local addMP = 0
+local restingMaxMP = false
 -- The maneuver set waiting to be held once the maneuver finishes (see DoAbility / DoDefault)
 local pendingManeuverSet = nil
 local pendingManeuverExpires = 0
@@ -110,6 +117,18 @@ local RequiredSets = T{
     'Preshot','Midshot',
     'LockSet1','LockSet2','LockSet3','VileElixir','Resting_MPSub',
 }
+
+-- Your max MP on the current subjob, worked out the way gcmage does it: /setmp first, then the *SJMaxMP setting from PUP.lua.
+local function SubjobMaxMP(player)
+    if (setMP > 0) then
+        return setMP + addMP
+    end
+    local sjMaxMP = settings[string.lower(tostring(player.SubJob)) .. 'SJMaxMP']
+    if (sjMaxMP ~= nil) then
+        return sjMaxMP + addMP
+    end
+    return nil
+end
 
 function gcpup.SetSettings(userSettings)
     for k, v in pairs(userSettings) do
@@ -189,6 +208,7 @@ function gcpup.DoCommands(args, sets)
         local player = gData.GetPlayer()
         local restMain = (sets.Resting_MPSub ~= nil and sets.Resting_MPSub.Main ~= nil) and tostring(sets.Resting_MPSub.Main) or 'none'
         print(chat.header('GCPup'):append(chat.message('Status=' .. tostring(player.Status) .. '  SubJob=' .. tostring(player.SubJob) .. '  Resting_MPSub Main=' .. restMain)))
+        print(chat.header('GCPup'):append(chat.message('MP=' .. tostring(player.MP) .. '  MaxMP for IdleMaxMP=' .. tostring(SubjobMaxMP(player)) .. '  (/setmp ' .. setMP .. ', /addmp ' .. addMP .. ')')))
     elseif (cmd == 'staff') then
         gcdisplay.AdvanceToggle('Staff')
         gcinclude.Message('Staff Swaps', gcdisplay.GetToggle('Staff'))
@@ -196,6 +216,15 @@ function gcpup.DoCommands(args, sets)
         gcdisplay.AdvanceToggle('PetWS')
         gcinclude.Message('PetWS', gcdisplay.GetToggle('PetWS'))
     elseif (MageCommands:contains(cmd)) then
+        -- Mirror gcmage's own /setmp, /addmp and /resetmp handling so IdleMaxMP sees the same values
+        if (cmd == 'setmp' and tonumber(args[2]) ~= nil) then
+            setMP = tonumber(args[2])
+        elseif (cmd == 'addmp' and tonumber(args[2]) ~= nil) then
+            addMP = tonumber(args[2])
+        elseif (cmd == 'resetmp') then
+            setMP = 0
+            addMP = 0
+        end
         gcmage.DoCommands(args, sets)
     elseif (cmd == 'lag') then
         gcmelee.DoCommands(args)
@@ -255,6 +284,23 @@ function gcpup.DoDefault(sets)
     gcpup.DoDefaultAfterOverride(sets)
 end
 
+-- Idle_Pet / Pet_Only_Tp_ and the /pupmode set, while the automaton is out
+local function EquipPetLayers(sets, player, pet, pupMode, tpSet)
+    if (pet == nil) then
+        return
+    end
+    if (pet.Status == 'Engaged') then
+        if (player.Status ~= 'Engaged') then
+            gFunc.EquipSet(sets['Pet_Only_Tp_' .. tpSet])
+        end
+    elseif (player.Status == 'Idle') then
+        gFunc.EquipSet(sets.Idle_Pet)
+    end
+    -- The /pupmode set (Tank, Melee, ...) stays on the whole time the automaton is out, layered over Idle_Pet,
+    -- so pet HP/MP+ pieces raise its max HP/MP before it engages instead of only once it's fighting.
+    gFunc.EquipSet(sets[pupMode])
+end
+
 function gcpup.DoDefaultLayers(sets)
     local player = gData.GetPlayer()
     local pet = gData.GetPet()
@@ -272,27 +318,39 @@ function gcpup.DoDefaultLayers(sets)
         end
     end
 
-    if (pet ~= nil) then
-        if (pet.Status == 'Engaged') then
-            if (player.Status ~= 'Engaged') then
-                gFunc.EquipSet(sets['Pet_Only_Tp_' .. tpSet])
-            end
-        elseif (player.Status == 'Idle') then
-            gFunc.EquipSet(sets.Idle_Pet)
+    -- IdleMaxMP, the same rule Rag's gcmage uses, but only on a mage subjob: in a Normal / Alternate idle set with your MP
+    -- at or above your max MP (/setmp, or the *SJMaxMP setting for that subjob), so MP+ gear lifts your max while you are full.
+    if (MageSubjobs:contains(player.SubJob) and (gcdisplay.IdleSet == 'Normal' or gcdisplay.IdleSet == 'Alternate')) then
+        local maxMP = SubjobMaxMP(player)
+        if (maxMP ~= nil and player.MP >= maxMP) then
+            gFunc.EquipSet(sets.IdleMaxMP)
         end
-        -- The /pupmode set (Tank, Melee, ...) stays on the whole time the automaton is out, layered over Idle_Pet,
-        -- so pet HP/MP+ pieces raise its max HP/MP before it engages instead of only once it's fighting.
-        gFunc.EquipSet(sets[pupMode])
     end
+
+    EquipPetLayers(sets, player, pet, pupMode, tpSet)
 end
 
 function gcpup.DoDefaultAfterOverride(sets)
     local player = gData.GetPlayer()
     local pet = gData.GetPet()
     local pupMode = gcdisplay.GetCycle('PupMode')
+    local petAction = (pet ~= nil) and GetPetAction() or nil
+
+    -- Resting on a mage subjob: once MP reaches 95%, Rag's gcmage swaps the Resting set back to Idle and puts IdleMaxMP on,
+    -- and keeps it that way until you stand up, so the last part of the rest is done in MP+ gear. Same here, with the
+    -- automaton's Idle_Pet / pupmode set put back on top. Resting_MPSub (Dark Staff) still goes on last.
+    if (player.Status == 'Resting' and MageSubjobs:contains(player.SubJob)) then
+        if (player.MPP >= 95 or restingMaxMP) then
+            restingMaxMP = true
+            gcinclude.DoDefaultIdle()
+            gFunc.EquipSet(sets.IdleMaxMP)
+            EquipPetLayers(sets, player, pet, pupMode, gcdisplay.GetCycle('TPSet'))
+        end
+    else
+        restingMaxMP = false
+    end
 
     if (pet ~= nil and pet.Status == 'Engaged' and PetWSIdleSets:contains(gcdisplay.IdleSet)) then
-        local petAction = GetPetAction()
         if (petAction ~= nil) then
             if (AutomatonRangedWS:contains(petAction.Name)) then
                 gFunc.EquipSet(sets.Pet_RNGWS)
@@ -312,20 +370,14 @@ function gcpup.DoDefaultAfterOverride(sets)
     -- so the pet magic legs follow /pupmode: Heals wears the cure legs, Mage wears the black magic legs.
     -- This does not wait for the automaton to be out: after Activate, Horizon Mode checks gear before the automaton
     -- has spawned and then not again until your next action, so a pet check here would leave the legs off.
-    if (PetWSIdleSets:contains(gcdisplay.IdleSet)) then
-        if (pupMode == 'Heals') then
-            gFunc.EquipSet(sets.Pet_Magic)
-            gFunc.EquipSet(sets.Pet_Magic_Cure)
-        elseif (pupMode == 'Mage') then
-            gFunc.EquipSet(sets.Pet_Magic)
-            gFunc.EquipSet(sets.Pet_Magic_Black)
-        end
+    if (PetWSIdleSets:contains(gcdisplay.IdleSet) and (pupMode == 'Heals' or pupMode == 'Mage')) then
+        gFunc.EquipSet(sets.Pet_Magic)
+        gFunc.EquipSet((pupMode == 'Heals') and sets.Pet_Magic_Cure or sets.Pet_Magic_Black)
     end
 
     -- Pet_Casting: only while the automaton is casting. Horizon Mode never runs this check when the automaton
     -- starts a spell, so it is switched off whenever LuAshitacast's Horizon Mode checkbox is on.
     if (not gSettings.HorizonMode and pet ~= nil and PetWSIdleSets:contains(gcdisplay.IdleSet)) then
-        local petAction = GetPetAction()
         if (petAction ~= nil and petAction.ActionType == 'Spell') then
             -- Same split as /pupmode Heals and Mage: healing spells get Pet_Casting_Cure, everything else Pet_Casting_Black
             gFunc.EquipSet(sets.Pet_Casting)
@@ -350,7 +402,6 @@ function gcpup.DoDefaultAfterOverride(sets)
     -- Alternate resting set: on an MP subjob, Resting_MPSub (Dark Staff) goes on over Rag's Resting set automatically.
     -- It uses the same 16 second wait Rag uses before his Resting set, and goes on last so nothing above
     -- (weapon loadouts, lockable set) can put your weapon back over the staff.
-    local player = gData.GetPlayer()
     if (player.Status == 'Resting' and MPSubjobs:contains(player.SubJob)) then
         if (restStart == nil) then
             restStart = os.clock()
@@ -458,7 +509,6 @@ function gcpup.DoMidcast(sets)
             gFunc.EquipSet(sets.Phalanx)
         end
     end
-
 
     KeepWeapons()
 end

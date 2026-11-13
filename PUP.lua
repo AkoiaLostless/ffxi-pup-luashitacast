@@ -32,12 +32,14 @@ local settings = {
     -- The following is provided as a convenient saved setting over using the /sethp command. HP will fluctuate with SJ and usage of the command for this is required.
     max_hp_in_idle_with_regen_gear_equipped = 0, -- Set this to 0 if you do not wish to ever use regen gear.
 
-    -- Your max MP per subjob, used by gcmage for water ring / uggalepih / ice ring checks. Leave nil if you don't care. /setmp overrides these.
+    -- Your max MP per subjob, used by gcmage for water ring / uggalepih / ice ring checks, and for IdleMaxMP on RDM / WHM / BLM / BLU.
+    -- Leave nil if you don't care. /setmp overrides these.
     ninSJMaxMP = nil,
     whmSJMaxMP = nil,
     blmSJMaxMP = nil,
     rdmSJMaxMP = nil,
     drkSJMaxMP = nil,
+    bluSJMaxMP = nil, -- Only used for IdleMaxMP (gcmage has no BLU checks)
 
     -- Automaton TP at which Pet_WS / Pet_RNGWS goes on. Automatons weaponskill at 1000 TP, so swapping slightly early makes sure the gear is on in time.
     pet_ws_tp_threshold = 950,
@@ -95,7 +97,7 @@ local sets = {
     },
 
     Precast = {},
-    IdleMaxMP = {},
+    IdleMaxMP = {}, -- MP+ gear, RDM / WHM / BLM / BLU subjob only: worn while idle with full MP (needs /setmp or the *SJMaxMP settings above) and while resting from 95% MP
     SIRD = { -- Override sets (Resistance / Evasion) take precedence if in use.
     },
     Haste = {}, -- Utsusemi and other no-potency spells

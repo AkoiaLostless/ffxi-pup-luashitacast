@@ -39,6 +39,7 @@ Ashita/config/addons/luashitacast/
 
 - **Maneuvers:** using a maneuver puts on that element's set before the maneuver is sent and holds it 0.5 seconds after it finishes: `Fire_Maneuver`, `Ice_Maneuver`, `Wind_Maneuver`, `Earth_Maneuver`, `Thunder_Maneuver`, `Water_Maneuver`, `Light_Maneuver`, `Dark_Maneuver`.
 - **Other job abilities:** Activate / Deus Ex Automata → `Activate`, Repair → `Repair`, Maintenance → `Maintenance` (Automat. Oil +2), Overdrive → `Overdrive` (also kept on while the buff is up), Ventriloquy → `Ventriloquy`, Role Reversal → `Role_Reversal`.
+- **Full MP on a mage subjob (RDM / WHM / BLM / BLU):** `IdleMaxMP` goes on while idle in a Normal or Alternate idle set with your MP at or above your max (from `/setmp` or the `*SJMaxMP` settings in `PUP.lua`), and while resting once MP reaches 95%. Same rule as Rag's mage profiles.
 - **Resting on an MP subjob:** on DRK, WHM, RDM, BLM or BLU, `Resting_MPSub` (your Dark Staff) goes on over Rag's Resting set after the same 16 second wait.
 - **/DRK extras (Rag v320):** Weapon Bash → `WeaponBash`; Stun with `/mode` Accuracy → `StunACC`.
 - **Subjob TP pieces:** while engaged, `TP_DRG` on /DRG and `TP_THF` on /THF.
@@ -89,7 +90,7 @@ Each one switches your idle set to that set. Type the same command again to go b
 | Command | What it does |
 |---|---|
 | `/mode` | Cycles magic mode Potency ↔ Accuracy. Accuracy uses `EnfeeblingACC` and gcmage's accuracy sets. |
-| `/setmp <number>` | Your max MP, for gcmage's MP-based gear checks. Overrides the `*SJMaxMP` settings in `PUP.lua`. |
+| `/setmp <number>` | Your max MP, for gcmage's MP-based gear checks and `IdleMaxMP`. Overrides the `*SJMaxMP` settings in `PUP.lua`. |
 | `/addmp <number>` | Extra MP added to that value. |
 | `/resetmp` | Clears `/setmp` and `/addmp`. |
 
